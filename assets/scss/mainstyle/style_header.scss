@@ -1,0 +1,395 @@
+header {
+  position: relative;
+  @include clearfix();
+  width: 100%;
+  background-color: $red;
+  @include breakpoint(1040px) {
+    border-bottom: 10px solid $hover-1;
+  }
+
+  ul {
+    display: none;
+    list-style: none;
+    width: 100%;
+    @include breakpoint(1040px) {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  li {
+    transition: background-color 150ms;
+    &:hover,
+    &.active {
+      background-color: $hover-1;
+      .drop {
+        display: block;
+      }
+    }
+  }
+  a {
+    position: relative;
+    display: block;
+    font-size: 15px;
+    color: $white;
+    text-transform: uppercase;
+    padding: 15px 10px 15px 60px;
+    @include breakpoint(1040px) {
+      font-size: 12px;
+      padding: 60px 8px 12px 8px;
+    }
+    @include breakpoint(min-width 1100px) {
+      padding: 60px 14px 12px 14px;
+    }
+    @include breakpoint(min-width 1200px) {
+      font-size: 15px;
+    }
+    @include breakpoint($desktop-wide) {
+      font-size: 15px;
+    }
+    &:before {
+      position: absolute;
+      left: 22px;
+      transform: translateY(-50%);
+      top: 50%;
+      @include breakpoint(1040px) {
+        top: inherit;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 35px;
+      }
+    }
+  }
+
+  .search {
+    visibility: hidden;
+    &:hover {
+      background-color: transparent;
+    }
+    img {
+      width: 22px;
+      height: auto;
+    }
+    a {
+      &:before {
+        position: absolute;
+        content: "";
+        width: 22px;
+        height: 22px;
+        background-image: url("https://jeffersoncruzit.github.io/portfolio-gardenia/assets/images/search.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        @include breakpoint(1040px) {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%);
+        }
+      }
+    }
+    span {
+      visibility: hidden;
+    }
+  }
+
+  .logo {
+    display: none;
+    position: relative;
+    width: 200px;
+    height: 100px;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    @include breakpoint(1040px) {
+      display: block;
+    }
+    @include breakpoint($desktop-wide) {
+      // width: 290px;
+    }
+    &:hover {
+      background-color: transparent;
+    }
+    a {
+      position: absolute;
+      padding: 0;
+      display: block;
+      top: 49px;
+      right: 0px;
+      left: 0px;
+      margin: 0 auto;
+      z-index: 80;
+    }
+  }
+
+  .plant-list {
+    // background-color: transparent;
+    &:hover {
+      // background-color: $white;
+    }
+    a {
+      // color: $white;
+      // font-weight: 600;
+    }
+  }
+
+  .jingle {
+    display: none;
+    @include breakpoint(1040px) {
+      display: block;
+      position: absolute;
+      width: auto;
+      float: none;
+      top: 25px;
+      left: 2%;
+    }
+  }
+
+  .jingle-icon {
+    padding: 0;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.products-icon {
+  &:before {
+    content: url("https://jeffersoncruzit.github.io/portfolio-gardenia/assets/images/products-icon.png");
+  }
+}
+
+.bread-treats-icon {
+  &:before {
+    content: url("https://jeffersoncruzit.github.io/portfolio-gardenia/assets/images/bread-treats-icon.png");
+  }
+}
+
+.story-icon {
+  &:before {
+    content: url("https://jeffersoncruzit.github.io/portfolio-gardenia/assets/images/story-icon.png");
+  }
+}
+
+.news-icon {
+  &:before {
+    content: url("https://jeffersoncruzit.github.io/portfolio-gardenia/assets/images/news-icon.png");
+  }
+}
+
+.wellness-icon {
+  &:before {
+    content: url("https://jeffersoncruzit.github.io/portfolio-gardenia/assets/images/heart-icon.png");
+  }
+}
+
+.careers-icon {
+  &:before {
+    content: url("https://jeffersoncruzit.github.io/portfolio-gardenia/assets/images/careers-icon.png");
+  }
+}
+
+.contactus-icon {
+  &:before {
+    content: url("https://jeffersoncruzit.github.io/portfolio-gardenia/assets/images/contactus-icon.png");
+  }
+}
+
+.plant-icon {
+  &:before {
+    content: url("https://jeffersoncruzit.github.io/portfolio-gardenia/assets/images/plant-icon.png");
+    left: 10px;
+    @include breakpoint(1040px) {
+      left: 50%;
+    }
+  }
+}
+
+.drop {
+  display: none;
+  background: white;
+  max-height: 300px;
+  overflow: auto;
+
+  @include breakpoint(1040px) {
+    max-height: none;
+    position: absolute;
+    z-index: 111;
+    min-width: 205px;
+    height: auto;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow: hidden;
+  }
+}
+
+a.cat-type {
+  color: $hover-1;
+  font-weight: 700;
+  padding: 15px 20px;
+  transition: color 150ms, background 150ms;
+  border-bottom: 1px dotted lighten($text, 60);
+
+  @include breakpoint(1040px) {
+    width: 205px;
+  }
+  &:hover {
+    color: $white;
+    background: $hover-1;
+  }
+
+  @include breakpoint(1040px) {
+    display: inline-block;
+  }
+}
+
+.category {
+  /* position: relative; */
+  @include breakpoint(1040px) {
+    /* height:50px; */
+  }
+  &:hover {
+    @include breakpoint(1040px) {
+      /* .cat-content{
+        display:inline-block;
+      } */
+
+      .cat-type {
+        /* width: 30%; */
+        float: left;
+      }
+    }
+  }
+}
+
+.clone-here {
+  display: none;
+  margin-bottom: -5px;
+  @include breakpoint(1040px) {
+    display: inline-block;
+    background: lighten($hover-1, 10);
+  }
+  .cat-content {
+    @include breakpoint(1040px) {
+      display: block;
+    }
+
+    .img-wrap {
+      display: inline-block;
+      border-left: 3px solid $hover-1;
+      background: white;
+    }
+  }
+}
+
+.wrap {
+  @include breakpoint(1040px) {
+    width: 205px;
+    float: left;
+  }
+}
+
+.cat-content {
+  @include breakpoint(1040px) {
+    /* width: 500px;  */
+    float: right;
+    display: none;
+  }
+  .img-wrap {
+    display: none;
+    width: 170px;
+    height: 100%;
+    overflow: hidden;
+    @include breakpoint(1040px) {
+      display: none;
+      float: right;
+      /* width: 50%; */
+      height: auto;
+      img {
+        display: none;
+      }
+      img.active {
+        display: block;
+      }
+    }
+
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
+}
+
+.cat-links {
+  @include breakpoint(1040px) {
+    width: 200px;
+    float: left;
+    background: lighten($hover-1, 10);
+  }
+  a {
+    color: $text;
+    transition: color 150ms;
+    @include breakpoint(1040px) {
+      padding: 5px 20px 5px 30px;
+      color: white;
+    }
+    &:hover {
+      color: $hover-1;
+      @include breakpoint(1040px) {
+        color: white;
+        background: darken($hover-1, 5);
+      }
+    }
+
+    @include breakpoint(1040px) {
+      padding: 6px 20px;
+      position: relative;
+
+      &:before {
+        // content: "";
+        // width: 3px;
+        // height: 3px;
+        // background: $text;
+        // border-radius: 50%;
+        // position: absolute;
+        // left: 15px;
+        // top: 13px;
+      }
+    }
+  }
+}
+.mobile-menu {
+  position: relative;
+  @include clearfix();
+  width: 100%;
+  border-bottom: 10px solid darken($hover-1, 10);
+  @include breakpoint(1040px) {
+    display: none;
+  }
+  .mobile-logo {
+    display: inline-block;
+    float: left;
+    width: 130px;
+    padding: 5px 0px 5px 10px;
+    margin-left: 10px;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+  .menu-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    display: inline-block;
+    float: right;
+    width: 33px;
+    height: auto;
+    padding: 0;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+}

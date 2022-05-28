@@ -1,0 +1,146 @@
+// place variables ghost classes and mixins here
+
+//VARIABLES
+
+// colors
+$main: #ce9e41;
+$main-2: #f1d7ba;
+$accent: #d7aa59;
+$text: #3a3a3c;
+$red: #ce0414;
+$white: #fff;
+$hover-1: #e1b56a;
+$blue: #101046;
+$blue-2: #050581;
+
+//breakpoints
+$mobile: 470px;
+$tablet: 700px;
+$desktop: 1000px;
+$desktop-wide: 1290px;
+
+//fonts
+$heading-font: "Merriweather", Georgia, "Times New Roman", serif;
+$paragraph: "Open Sans", Helvetica, Arial, sans-serif;
+$font-main: "Open Sans", Helvetica, Arial, sans-serif;
+$font-rancho: "rancho";
+$font-satisfy: "satisfy";
+
+@font-face {
+  font-family: $font-satisfy;
+  src: url("https://jeffersoncruzit.github.io/portfolio-gardenia/assets/fonts/satisfy-regular-webfont.woff2")
+      format("woff2"),
+    url("https://jeffersoncruzit.github.io/portfolio-gardenia/assets/fonts/satisfy-regular-webfont.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: $font-rancho;
+  src: url("https://jeffersoncruzit.github.io/portfolio-gardenia/assets/fonts/rancho.woff2")
+      format("woff2"),
+    url("https://jeffersoncruzit.github.io/portfolio-gardenia/assets/fonts/rancho.woff")
+      format("woff");
+}
+
+//arrays
+$sg-colorlist: $main, $red, $text;
+
+$browser-context: 16; // Default
+
+$susy: (
+  columns: 12,
+);
+
+//MIXINS
+
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em;
+}
+
+@mixin clearfix() {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin vertical-align() {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin pop-up() {
+  @extend %vertical-align;
+  width: 50%;
+  height: 200px;
+  background: white;
+  margin: 0 auto;
+  position: fixed;
+  left: 0;
+  right: 0;
+
+  .close {
+    width: 15px;
+    height: 15px;
+    background: red;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+  }
+}
+
+@mixin flip-h {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+@mixin flip-v {
+  -moz-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+  filter: FlipV;
+  -ms-filter: "FlipV";
+}
+
+@mixin prefix($property, $value, $vendors: webkit moz ms o) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  #{$property}: #{$value};
+}
+
+@mixin suffix($property, $value, $vendors: webkit moz ms o) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{ $property}: #{"-" + $vendor + "-" + $value};
+    }
+  }
+  #{$property}: #{$value};
+}
+
+@mixin fluid-aspect($ratio: 1 1, $selector: "> :first-child") {
+  $selector: unquote($selector);
+
+  padding-bottom: percentage(nth($ratio, 2) / nth($ratio, 1));
+  position: relative;
+
+  #{$selector} {
+    left: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}

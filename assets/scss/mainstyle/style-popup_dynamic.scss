@@ -1,0 +1,170 @@
+// popupdynamic css start
+
+%clearfix {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+
+  @mixin transform($edit){
+ -ms-transform: $edit;
+ -webkit-transform: $edit;
+ -moz-transform: $edit;
+ -o-transform: $edit;
+ transform: $edit;
+  }
+
+// optional if not declared in mainstyle start
+  * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }  
+
+%style-popup_dynamic {
+
+// optional if not declared in mainstyle end
+
+
+
+  .popup-main, .dynamic-popup, .popup-wrap, .btn-popup_close {
+    display: none;
+  }
+
+// popup-container scroll css
+  .ps-container>.ps-scrollbar-y-rail>.ps-scrollbar-y {
+    opacity: 0;
+  }
+
+  .ps-scrollbar-x-rail {
+
+  }
+
+  .ps-scrollbar-x {
+
+  }
+
+  .ps-scrollbar-y-rail {
+      // z-index: 101;
+  }
+
+  .ps-scrollbar-y {
+    
+  }
+
+
+
+// modify this to control the main width of the popup
+  .popup-container {
+    @extend %clearfix;
+    width: 50%;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%,-50%));
+    z-index: 100;
+    // overflow-y: auto;
+    // @include breakpoint(min-width 1000px) {
+    //   overflow-y: inherit; 
+    // }
+  }
+
+  .popup-main {
+    @extend %clearfix;
+    width: 100%;
+    z-index: 100;
+    position: relative;
+    backface-visibility: hidden;
+  }
+
+  .dynamic-popup {
+    @extend %clearfix;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+    overflow: hidden;
+  }
+
+  .popup-section {
+    position: relative;
+    display: inline-block;
+    float: left;
+    width: 100%;
+    height: auto;
+  }
+
+  .popup-section-wrap {
+    @extend %clearfix;
+    position: relative;
+  }
+    .popup-wrap {
+      position: fixed;
+      background-color: transparentize(gray, 1);
+      width: 100%;
+      height: 100%;
+      z-index: 99;
+    }
+
+    .dynamic-popup-container {
+      position: relative;
+      @extend %clearfix;
+    }
+
+    .popup-slider {
+      @extend %clearfix;
+      position: relative;
+      left: 0px;
+      transition: left 1s ease;
+
+      // popup-section scroll css
+      .ps-container>.ps-scrollbar-y-rail>.ps-scrollbar-y {
+        opacity: 1;
+      }
+    }
+
+    .btn-popup_close {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      z-index: 101;
+      cursor: pointer;
+      &:before {
+        font-size: 30px;
+        color: white;
+      }
+    }
+
+    .btn-popup_prev {
+      position: absolute;
+      left: 0px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 101;
+      cursor: pointer;
+      &:before {
+        content: '\f053';
+        font-family: fontAwesome;
+        font-size: 30px;
+        color: white;
+      }
+    }
+
+    .btn-popup_next {
+      position: absolute;
+      right: 0px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 101;
+      cursor: pointer;
+      &:before {
+        content: '\f054';
+        font-family: fontAwesome;
+        font-size: 30px;
+        color: white;
+      }
+    }
+}
+// popupdynamic css end

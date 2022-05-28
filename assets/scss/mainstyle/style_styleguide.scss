@@ -1,0 +1,49 @@
+//STYLE GUIDE --styles exclusive to the styleguide page
+
+h2.title-sg{
+  border-bottom: 1px solid $text;
+  margin-bottom: 15px;
+}
+
+.section-sg{
+  padding: em(20) 5%;
+  @include container(100%);
+}
+
+.sg-colors{
+  list-style-type:none;
+  @include container(100%);
+
+  li{
+    font-weight: 700;
+    padding: 5px;
+    margin: 5px 0;
+    text-transform: uppercase;
+
+    @each $current-color in $sg-colorlist {
+
+    $i: index($sg-colorlist, $current-color);
+
+    
+
+      &:nth-child(#{$i}){
+        background: $current-color;
+        figcaption{
+          color: white;
+        }
+      }
+    }
+
+    figure{
+      width: 100%;
+      height: 50px;
+      margin:0;
+    }
+
+    figcaption{
+      text-align:center;
+    }
+  }
+}
+
+
